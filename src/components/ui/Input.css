@@ -1,0 +1,155 @@
+/* === Input Wrapper === */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.input-full {
+  width: 100%;
+}
+
+/* === Label === */
+.input-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.input-wrapper:focus-within .input-label {
+  color: var(--accent-primary);
+}
+
+/* === Container === */
+.input-container {
+  position: relative;
+  display: flex;
+}
+
+/* === Icon === */
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: var(--transition-fast);
+  z-index: 1;
+}
+
+.input-container:focus-within .input-icon {
+  color: var(--accent-primary);
+}
+
+/* === Field === */
+.input-field {
+  width: 100%;
+  padding: 10px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm); /* 8px */
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  transition: var(--transition-default);
+  outline: none;
+  line-height: 1.5;
+}
+
+.input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.input-field:hover {
+  border-color: var(--text-secondary);
+}
+
+.input-field:focus {
+  border: 2px solid var(--accent-primary);
+  padding: 9px 15px; /* Offset the 2px border to prevent layout shifts */
+}
+
+/* === Has Icon === */
+.has-icon {
+  padding-left: 40px;
+}
+
+.input-field.has-icon:focus {
+  padding-left: 39px;
+}
+
+/* === Textarea === */
+.input-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.input-textarea .input-icon {
+  top: 20px;
+  transform: none;
+}
+
+/* === Select === */
+.input-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2370757a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.input-select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a73e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-theme='dark'] .input-select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238ab4f8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.input-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* === Error State === */
+.input-error .input-field {
+  border-color: var(--status-expired);
+}
+
+.input-error .input-field:focus {
+  border-color: var(--status-expired);
+}
+
+.input-error .input-label {
+  color: var(--status-expired);
+}
+
+.input-error .input-icon {
+  color: var(--status-expired);
+}
+
+.input-error-text {
+  font-size: var(--font-size-xs);
+  color: var(--status-expired);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  animation: fadeInUp 0.2s ease;
+}
+
+/* === Helper Text === */
+.input-helper {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+/* === Focus Ring for Accessibility === */
+.input-field:focus-visible {
+  outline: none;
+}

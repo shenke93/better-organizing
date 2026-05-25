@@ -1,0 +1,72 @@
+/* === Empty State === */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-8);
+  text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+/* === Icon Wrapper === */
+.empty-state-icon-wrapper {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-full);
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+  position: relative;
+  transition: var(--transition-slow);
+}
+
+.empty-state-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--accent-glow);
+  animation: empty-state-pulse 3s ease-in-out infinite;
+}
+
+@keyframes empty-state-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+/* === Icon === */
+.empty-state-icon {
+  color: var(--accent-primary);
+  opacity: 0.6;
+}
+
+/* === Title === */
+.empty-state-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+/* === Description === */
+.empty-state-description {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+/* === Action === */
+.empty-state-action {
+  margin-top: var(--space-6);
+}

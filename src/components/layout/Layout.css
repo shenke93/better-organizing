@@ -1,0 +1,16 @@
+/* === LAYOUT OVERRIDES === */
+
+/*
+  Core .app-layout, .app-main, and .app-content styles live in index.css.
+  This file holds component-specific overrides and enhancements.
+*/
+
+/* Smooth content shift when sidebar collapses/expands */
+.app-main {
+  transition: margin-left 0.2s ease;
+}
+
+/* Fade-in for page content on route change */
+.app-content {
+  animation: fadeIn 0.25s ease;
+}

@@ -1,0 +1,166 @@
+/* === Button Base === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: none;
+  border-radius: 24px; /* Fully rounded capsule for Material Design 3 */
+  font-family: var(--font-family);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* === Variants === */
+
+/* Primary */
+.btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background: var(--accent-secondary);
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+  background: var(--accent-tertiary);
+}
+
+/* Secondary */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--accent-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-primary);
+}
+
+.btn-secondary:active {
+  background: var(--accent-glow-strong);
+}
+
+/* Ghost / Text Button */
+.btn-ghost, .btn.btn-text {
+  background: transparent;
+  color: var(--accent-primary);
+  padding: 8px 16px;
+}
+
+.btn-ghost:hover, .btn.btn-text:hover {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+}
+
+.btn-ghost:active, .btn.btn-text:active {
+  background: var(--accent-glow-strong);
+}
+
+/* Danger */
+.btn-danger {
+  background: transparent;
+  color: var(--status-expired);
+  border: 1px solid var(--border-color);
+}
+
+.btn-danger:hover {
+  background: var(--status-expired-bg);
+  border-color: var(--status-expired);
+}
+
+.btn-danger:active {
+  background: rgba(242, 139, 130, 0.25);
+}
+
+/* === Sizes === */
+.btn-sm {
+  padding: 6px 16px;
+  font-size: var(--font-size-xs);
+  border-radius: 16px;
+  gap: var(--space-1);
+}
+
+.btn-md {
+  padding: 10px 24px;
+  font-size: var(--font-size-sm);
+  border-radius: 20px;
+}
+
+.btn-lg {
+  padding: 14px 32px;
+  font-size: var(--font-size-md);
+  border-radius: 28px;
+  gap: var(--space-3);
+}
+
+/* === Modifiers === */
+.btn-full {
+  width: 100%;
+}
+
+.btn-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* === Icon === */
+.btn-icon {
+  flex-shrink: 0;
+}
+
+/* === Spinner === */
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--radius-full);
+  animation: btn-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Disabled === */
+.btn:disabled {
+  opacity: 0.38; /* Material Design 3 disabled state opacity */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border-color) !important;
+}
+
+.btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* === Focus Ring === */
+.btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}

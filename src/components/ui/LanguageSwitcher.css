@@ -1,0 +1,88 @@
+/* === Language Switcher === */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* === Globe Icon === */
+.lang-switcher-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.lang-switcher:hover .lang-switcher-icon {
+  color: var(--text-secondary);
+}
+
+/* === Options Container === */
+.lang-switcher-options {
+  display: flex;
+  background: var(--bg-card);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  position: relative;
+}
+
+/* === Individual Option === */
+.lang-option {
+  padding: 4px 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.lang-option:hover {
+  color: var(--text-primary);
+}
+
+.lang-option:active {
+  transform: scale(0.96);
+}
+
+/* === Active Option === */
+.lang-option-active {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  border-radius: var(--radius-full);
+}
+
+.lang-option-active:hover {
+  color: var(--text-inverse);
+}
+
+/* === Divider Between Options === */
+.lang-option + .lang-option {
+  border-left: 1px solid var(--glass-border);
+}
+
+.lang-option-active + .lang-option,
+.lang-option + .lang-option-active {
+  border-left-color: transparent;
+}
+
+/* === Compact Variant === */
+.lang-switcher-compact .lang-switcher-icon {
+  display: none;
+}
+
+.lang-switcher-compact .lang-option {
+  padding: 3px 10px;
+}
+
+/* === Focus Ring === */
+.lang-option:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: -2px;
+  border-radius: var(--radius-full);
+}

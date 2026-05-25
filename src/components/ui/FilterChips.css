@@ -1,0 +1,63 @@
+/* === Filter Chips Container === */
+.filter-chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* === Filter Chip === */
+.filter-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.filter-chip:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.filter-chip:active {
+  transform: scale(0.97);
+}
+
+/* === Active Chip === */
+.filter-chip-active {
+  background: var(--accent-glow);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.filter-chip-active:hover {
+  background: var(--accent-glow-strong);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* === Chip Icon === */
+.filter-chip-icon {
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* === Focus Ring === */
+.filter-chip:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}

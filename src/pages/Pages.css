@@ -1,0 +1,215 @@
+/* Page layout utilities */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Toolbar & Filtering layout */
+.inventory-toolbar {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.toolbar-search-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.inventory-search-bar {
+  flex: 1;
+  min-width: 260px;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.place-filter-select,
+.sort-select {
+  padding: 10px 32px 10px 14px !important;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  height: 42px;
+  min-width: 150px;
+  transition: var(--transition-fast);
+}
+
+.place-filter-select:hover,
+.sort-select:hover {
+  border-color: var(--text-secondary);
+}
+
+.place-filter-select:focus,
+.sort-select:focus {
+  border: 2px solid var(--accent-primary);
+  padding: 9px 31px 9px 13px !important;
+}
+
+.layout-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 42px;
+  height: 42px;
+  border-radius: 21px; /* Pill layout toggle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.layout-toggle-btn:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--text-secondary);
+}
+
+[data-theme='light'] .layout-toggle-btn:hover {
+  background-color: #f1f3f4;
+}
+
+/* Chips filter row */
+.toolbar-chips-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: 1px solid var(--divider-color);
+  padding-top: var(--space-3);
+}
+
+.chips-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+}
+
+.chips-group-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.clear-all-filters-btn {
+  background: transparent;
+  border: none;
+  color: var(--status-expired);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: var(--space-2);
+  transition: var(--transition-fast);
+}
+
+.clear-all-filters-btn:hover {
+  text-decoration: underline;
+}
+
+/* Settings Page */
+.settings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.settings-card {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.settings-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--divider-color);
+  padding-bottom: var(--space-2);
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.settings-label-col {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.settings-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.settings-desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Import dropzone */
+.file-import-input {
+  display: none;
+}
+
+/* Locations page specific additions */
+.locations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.locations-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.locations-actions-top {
+  display: flex;
+  gap: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .toolbar-search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .toolbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .place-filter-select,
+  .sort-select {
+    flex: 1;
+  }
+}
