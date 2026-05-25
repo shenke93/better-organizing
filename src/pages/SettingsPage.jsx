@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Sun, Moon, Globe, Download, Upload, Trash2, Info, CheckCircle2 } from 'lucide-react';
+import { Sun, Moon, Globe, Download, Upload, Trash2, Info, CheckCircle2, Shield } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useInventory } from '../context/InventoryContext';
 import { useToast } from '../components/ui/Toast';
@@ -20,7 +20,7 @@ export default function SettingsPage() {
   // Language Change handler
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
-    localStorage.setItem('instock-language', lang);
+    localStorage.setItem('homestorage-language', lang);
     addToast(t('common.success'), 'success');
   };
 
@@ -90,6 +90,27 @@ export default function SettingsPage() {
       <GuidingBoard pageKey="settings" />
 
       <div className="settings-grid">
+        {/* Security & Privacy Notice Card */}
+        <div className="settings-card glass-card" style={{ borderLeft: '4px solid var(--accent-primary)', gap: 'var(--space-3)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+            <Shield size={24} style={{ color: 'var(--accent-primary)' }} />
+            <h2 className="settings-card-title" style={{ borderBottom: 'none', paddingBottom: 0, margin: 0 }}>
+              {t('settings.privacyTitle')}
+            </h2>
+          </div>
+          <p className="settings-desc" style={{ fontSize: 'var(--font-size-sm)', lineHeight: 1.5, color: 'var(--text-primary)', marginTop: 0 }}>
+            {t('settings.privacyDesc')}
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', borderTop: '1px solid var(--divider-color)', paddingTop: 'var(--space-3)' }}>
+            <p className="settings-desc" style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+              {t('settings.pwaNotice')}
+            </p>
+            <p className="settings-desc" style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+              {t('settings.backupNotice')}
+            </p>
+          </div>
+        </div>
+
         {/* Appearance Section */}
         <div className="settings-card glass-card">
           <h2 className="settings-card-title">{t('settings.appearance')}</h2>

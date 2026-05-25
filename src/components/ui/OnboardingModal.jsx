@@ -2,17 +2,24 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Sparkles, MapPin, Layers, Layout, ArrowRight } from 'lucide-react';
 import { useInventory } from '../../context/InventoryContext';
+import { useTheme } from '../../context/ThemeContext';
 import { useToast } from './Toast';
 import { Button } from './Button';
 import './OnboardingModal.css';
 
 export function OnboardingModal({ isOpen, onClose }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { theme, setTheme } = useTheme();
   const { addToast } = useToast();
   const { addPlace, addStorageLocation, reloadData } = useInventory();
   const [isInitializing, setIsInitializing] = useState(false);
 
   if (!isOpen) return null;
+
+  const handleLanguageChange = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem('homestorage-language', lang);
+  };
 
   const handleAutoInit = async () => {
     setIsInitializing(true);
@@ -117,6 +124,57 @@ export function OnboardingModal({ isOpen, onClose }) {
               <span className="step-desc">{t('onboarding.step3')}</span>
             </div>
           </div>
+        </div>
+
+        {/* Dynamic Theme & Language Segment Pickers */}
+        <div className="onboarding-customizer">
+          <h3 className="customizer-section-title">{t('onboarding.customize')}</h3>
+          <div className="customizer-pickers-grid">
+            <div className="picker-row">
+              <span className="picker-label">{t('onboarding.selectLanguage')}</span>
+              <div className="segmented-toggle">
+                <button
+                  type="button"
+                  className={`segment-btn ${i18n.language === 'zh-CN' ? 'active' : ''}`}
+                  onClick={() => handleLanguageChange('zh-CN')}
+                >
+                  简体中文
+                </button>
+                <button
+                  type="button"
+                  className={`segment-btn ${i18n.language === 'en' ? 'active' : ''}`}
+                  onClick={() => handleLanguageChange('en')}
+                >
+                  English
+                </button>
+              </div>
+            </div>
+
+            <div className="picker-row">
+              <span className="picker-label">{t('onboarding.selectTheme')}</span>
+              <div className="segmented-toggle">
+                <button
+                  type="button"
+                  className={`segment-btn ${theme === 'light' ? 'active' : ''}`}
+                  onClick={() => setTheme('light')}
+                >
+                  {t('onboarding.light')}
+                </button>
+                <button
+                  type="button"
+                  className={`segment-btn ${theme === 'dark' ? 'active' : ''}`}
+                  onClick={() => setTheme('dark')}
+                >
+                  {t('onboarding.dark')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Local storage privacy & install reminders */}
+        <div className="onboarding-privacy-alert">
+          <p className="privacy-alert-text">{t('onboarding.localNotice')}</p>
         </div>
 
         <div className="onboarding-actions">

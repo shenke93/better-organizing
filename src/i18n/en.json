@@ -174,7 +174,11 @@
     "clearSuccess": "All data has been cleared.",
     "about": "About",
     "version": "Version",
-    "exportSuccess": "Data exported successfully"
+    "exportSuccess": "Data exported successfully",
+    "privacyTitle": "Data Security & Privacy",
+    "privacyDesc": "🔒 This application is designed with a Local-First philosophy. All your items, locations, subcategories, and history are stored 100% locally in your browser's database (IndexedDB). No data is ever sent to external cloud servers, fully protecting your privacy.",
+    "pwaNotice": "📱 Tip: We highly recommend using your browser's 'Add to Home Screen' option to save this page as a PWA (Progressive Web App). This gives you a fast, native-like experience and prevents the system/browser from automatically sweeping cache files.",
+    "backupNotice": "💾 Recommended: Periodically use the 'Export Data' option below to download a JSON backup file to a safe place in case you change devices or clear browser data."
   },
   "common": {
     "save": "Save",
@@ -236,7 +240,13 @@
     "initSuccess": "Default locations created! You can now start adding items.",
     "blockTitle": "Location Setup Required",
     "blockSubtitle": "Before you can add items, you need to set up at least one storage location.",
-    "dismissGuide": "Dismiss Guide"
+    "dismissGuide": "Dismiss Guide",
+    "customize": "Settings / 自定义",
+    "selectLanguage": "Language / 语言",
+    "selectTheme": "Theme / 主题",
+    "dark": "Dark / 深色模式",
+    "light": "Light / 浅色模式",
+    "localNotice": "🔒 Privacy First: All your home inventory records are stored 100% locally in your browser. We never upload any data to cloud servers. Note: Please add this page to your mobile home screen (Web-App) to prevent browser cache sweeps from resetting your data, and remember to export backups periodically in Settings."
   },
   "guides": {
     "dashboard": "Welcome to your HomeStorage Dashboard! Here you can see a high-level overview of your items, upcoming expirations, and stock levels.",

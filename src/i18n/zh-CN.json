@@ -174,7 +174,11 @@
     "clearSuccess": "所有数据已清除。",
     "about": "关于",
     "version": "版本",
-    "exportSuccess": "数据导出成功"
+    "exportSuccess": "数据导出成功",
+    "privacyTitle": "数据安全与隐私保护",
+    "privacyDesc": "🔒 本应用采用 Local-First（本地优先）设计理念。所有物品、位置、分类等数据 100% 存储在您的浏览器本地数据库（IndexedDB）中，不经过任何云端或服务器，完全保障您的隐私安全。",
+    "pwaNotice": "📱 提示：建议在手机或电脑浏览器中，将本页面“添加到主屏幕”（保存为应用/Web-App）。这样不仅能获得类似原生应用的流畅体验，还能有效避免浏览器因自动清理缓存而导致数据意外丢失。",
+    "backupNotice": "💾 强烈建议：定期使用下方的“导出数据”功能将您的库存备份为 JSON 文件，以防设备损坏或更换浏览器时丢失数据。"
   },
   "common": {
     "save": "保存",
@@ -236,7 +240,13 @@
     "initSuccess": "默认空间和储存位置已创建！现在可以开始添加物品了。",
     "blockTitle": "需要设置存储位置",
     "blockSubtitle": "在添加物品之前，您需要至少设置一个存储位置。",
-    "dismissGuide": "关闭指南"
+    "dismissGuide": "关闭指南",
+    "customize": "自定义 / Settings",
+    "selectLanguage": "语言 / Language",
+    "selectTheme": "主题 / Theme",
+    "dark": "深色模式 / Dark",
+    "light": "浅色模式 / Light",
+    "localNotice": "🔒 隐私保障：所有数据均 100% 保存在您的浏览器本地，不经过云端或服务器，无需担心隐私泄露。提示：请将此页面添加至手机/电脑主屏幕（保存为应用）以防止浏览器缓存被系统清理，并定期在“设置”中备份数据。"
   },
   "guides": {
     "dashboard": "欢迎使用家庭收纳仪表盘！在这里您可以查看物品总数、即将过期物品、库存状态以及分类图表。",
