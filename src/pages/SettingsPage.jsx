@@ -223,7 +223,7 @@ export default function SettingsPage() {
               </div>
             </div>
             <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 'var(--font-weight-semibold)', color: 'var(--text-secondary)' }}>
-              {t('settings.version')}: v1.0.0
+              {t('settings.version')}: v1.2.0
             </span>
           </div>
         </div>
