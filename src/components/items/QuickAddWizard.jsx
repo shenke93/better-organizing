@@ -22,7 +22,7 @@ export function QuickAddWizard({ initialData, onSubmit, onCancel }) {
     placeId: '',
     storageLocationId: '',
     expiryDate: '',
-    purchaseDate: '',
+    registrationDate: new Date().toISOString().split('T')[0],
     notes: '',
     tags: [],
   });
@@ -42,7 +42,7 @@ export function QuickAddWizard({ initialData, onSubmit, onCancel }) {
         placeId,
         storageLocationId: initialData.storageLocationId || '',
         expiryDate: initialData.expiryDate ? new Date(initialData.expiryDate).toISOString().split('T')[0] : '',
-        purchaseDate: initialData.purchaseDate ? new Date(initialData.purchaseDate).toISOString().split('T')[0] : '',
+        registrationDate: initialData.registrationDate ? new Date(initialData.registrationDate).toISOString().split('T')[0] : '',
         notes: initialData.notes || '',
         tags: initialData.tags || [],
       });
@@ -57,7 +57,30 @@ export function QuickAddWizard({ initialData, onSubmit, onCancel }) {
   }, [step]);
 
   const handleChange = (key, value) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
+    setFormData((prev) => {
+      const next = { ...prev, [key]: value };
+      
+      // Reactive clothing default expiry logic (+5 years)
+      if (key === 'category' && value === 'clothing') {
+        const regDateStr = next.registrationDate || new Date().toISOString().split('T')[0];
+        const regDate = new Date(regDateStr);
+        if (!isNaN(regDate.getTime())) {
+          const expDate = new Date(regDate.getFullYear() + 5, regDate.getMonth(), regDate.getDate());
+          next.expiryDate = expDate.toISOString().split('T')[0];
+          if (!next.registrationDate) {
+            next.registrationDate = regDateStr;
+          }
+        }
+      } else if (key === 'registrationDate' && next.category === 'clothing') {
+        const regDate = new Date(value);
+        if (value && !isNaN(regDate.getTime())) {
+          const expDate = new Date(regDate.getFullYear() + 5, regDate.getMonth(), regDate.getDate());
+          next.expiryDate = expDate.toISOString().split('T')[0];
+        }
+      }
+      
+      return next;
+    });
     setErrors((prev) => ({ ...prev, [key]: null }));
   };
 
@@ -123,7 +146,7 @@ export function QuickAddWizard({ initialData, onSubmit, onCancel }) {
       unit: formData.unit,
       storageLocationId: formData.storageLocationId,
       expiryDate: formData.expiryDate ? new Date(formData.expiryDate).toISOString() : undefined,
-      purchaseDate: formData.purchaseDate ? new Date(formData.purchaseDate).toISOString() : undefined,
+      registrationDate: formData.registrationDate ? new Date(formData.registrationDate).toISOString() : undefined,
       notes: formData.notes.trim() || undefined,
       tags: formData.tags.length > 0 ? formData.tags : undefined,
     };
@@ -313,11 +336,11 @@ export function QuickAddWizard({ initialData, onSubmit, onCancel }) {
                   />
                 </div>
                 <div className="form-group" style={{ marginTop: 'var(--space-2)' }}>
-                  <label className="input-label"><Calendar size={12} /> {t('item.purchaseDate')}</label>
+                  <label className="input-label"><Calendar size={12} /> {t('item.registrationDate')}</label>
                   <Input
                     type="date"
-                    value={formData.purchaseDate}
-                    onChange={(e) => handleChange('purchaseDate', e.target.value)}
+                    value={formData.registrationDate}
+                    onChange={(e) => handleChange('registrationDate', e.target.value)}
                   />
                 </div>
               </div>

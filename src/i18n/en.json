@@ -70,7 +70,7 @@
     "selectStorage": "Select storage location",
     "noStorageLocations": "No storage locations in this place",
     "expiryDate": "Expiry Date",
-    "purchaseDate": "Purchase Date",
+    "registrationDate": "Registration Date",
     "notes": "Notes",
     "notesPlaceholder": "Add any notes...",
     "tags": "Tags",

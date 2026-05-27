@@ -81,13 +81,13 @@ export function ItemDetail({ item, onEdit, onDelete, onClose }) {
           </div>
         )}
 
-        {/* Purchase Date */}
-        {item.purchaseDate && (
+        {/* Registration Date */}
+        {item.registrationDate && (
           <div className="detail-row">
             <div className="detail-icon"><Calendar size={18} /></div>
             <div className="detail-info">
-              <span className="detail-label">{t('item.purchaseDate')}</span>
-              <span className="detail-value">{formatDate(item.purchaseDate)}</span>
+              <span className="detail-label">{t('item.registrationDate')}</span>
+              <span className="detail-value">{formatDate(item.registrationDate)}</span>
             </div>
           </div>
         )}

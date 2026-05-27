@@ -2,6 +2,24 @@
 
 All notable changes to the **HomeStorage** (formerly *InStock*) project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.0] — 2026-05-27
+
+### Added
+- **React Portals for Mobile Modals (`Modal.jsx`, `OnboardingModal.jsx`)**:
+  - Implemented React Portals (`createPortal` from `react-dom`) to mount all modals directly inside `document.body` (outside the `#root` container).
+  - This solves the mobile stacking context issue, ensuring the modal and its backdrop unconditionally render on top of the fixed floating bottom navigation bar, making the "Save" and "Cancel" buttons fully visible and clickable.
+- **Database Version 2 Schema Upgrade & Live Migration (`database.js`)**:
+  - Upgraded internal Dexie.js database schema to version 2, renaming the `purchaseDate` column/property to `registrationDate`.
+  - Added an upgrade handler `.upgrade(async tx => ...)` that automatically migrates legacy IndexedDB item entries on first load without losing any user data.
+- **Legacy Backup Import Backward Compatibility (`export.js`)**:
+  - Upgraded JSON backups to version 2 format.
+  - Enhanced the backup import tool to automatically parse legacy version 1 backups and map the `purchaseDate` property to `registrationDate` on import.
+- **Default Registration Date & Reactive Clothing Expiry (+5 Years)**:
+  - Configured the Registration Date field to pre-populate to today's date by default when creating new items.
+  - Programmed reactive category date logic: selecting the "Clothing" category automatically pre-populates and updates the default Expiry Date to exactly **Registration Date + 5 years**, dynamically re-calculating if the registration date is modified.
+
+---
+
 ## [1.2.0] — 2026-05-25
 
 ### Added

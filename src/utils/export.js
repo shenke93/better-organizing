@@ -9,7 +9,7 @@ export async function exportToJSON() {
   const storageLocations = await db.storageLocations.toArray();
 
   const data = {
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     app: 'HomeStorage',
     items,
@@ -61,7 +61,16 @@ export async function importFromJSON(file, mode = 'merge') {
           await db.storageLocations.bulkPut(data.storageLocations);
         }
         if (data.items && data.items.length > 0) {
-          await db.items.bulkPut(data.items);
+          // Dynamic migration mapping for older backups (v1.1 or v1.2 JSONs)
+          const migratedItems = data.items.map((item) => {
+            const newItem = { ...item };
+            if (newItem.purchaseDate !== undefined && newItem.registrationDate === undefined) {
+              newItem.registrationDate = newItem.purchaseDate;
+              delete newItem.purchaseDate;
+            }
+            return newItem;
+          });
+          await db.items.bulkPut(migratedItems);
         }
 
         resolve({

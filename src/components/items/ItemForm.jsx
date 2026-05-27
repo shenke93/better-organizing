@@ -21,7 +21,7 @@ export function ItemForm({ initialData, onSubmit, onCancel }) {
     placeId: '',
     storageLocationId: '',
     expiryDate: '',
-    purchaseDate: '',
+    registrationDate: new Date().toISOString().split('T')[0],
     notes: '',
     tags: [],
   });
@@ -41,7 +41,7 @@ export function ItemForm({ initialData, onSubmit, onCancel }) {
         placeId,
         storageLocationId: initialData.storageLocationId || '',
         expiryDate: initialData.expiryDate ? new Date(initialData.expiryDate).toISOString().split('T')[0] : '',
-        purchaseDate: initialData.purchaseDate ? new Date(initialData.purchaseDate).toISOString().split('T')[0] : '',
+        registrationDate: initialData.registrationDate ? new Date(initialData.registrationDate).toISOString().split('T')[0] : '',
         notes: initialData.notes || '',
         tags: initialData.tags || [],
       });
@@ -49,7 +49,31 @@ export function ItemForm({ initialData, onSubmit, onCancel }) {
   }, [initialData, storageLocations]);
 
   const handleChange = (key, value) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
+    setFormData((prev) => {
+      const next = { ...prev, [key]: value };
+      
+      // Reactive clothing default expiry logic (+5 years)
+      if (key === 'category' && value === 'clothing') {
+        const regDateStr = next.registrationDate || new Date().toISOString().split('T')[0];
+        const regDate = new Date(regDateStr);
+        if (!isNaN(regDate.getTime())) {
+          const expDate = new Date(regDate.getFullYear() + 5, regDate.getMonth(), regDate.getDate());
+          next.expiryDate = expDate.toISOString().split('T')[0];
+          if (!next.registrationDate) {
+            next.registrationDate = regDateStr;
+          }
+        }
+      } else if (key === 'registrationDate' && next.category === 'clothing') {
+        const regDate = new Date(value);
+        if (value && !isNaN(regDate.getTime())) {
+          const expDate = new Date(regDate.getFullYear() + 5, regDate.getMonth(), regDate.getDate());
+          next.expiryDate = expDate.toISOString().split('T')[0];
+        }
+      }
+      
+      return next;
+    });
+
     if (errors[key]) {
       setErrors((prev) => ({ ...prev, [key]: null }));
     }
@@ -110,7 +134,7 @@ export function ItemForm({ initialData, onSubmit, onCancel }) {
       unit: formData.unit,
       storageLocationId: formData.storageLocationId,
       expiryDate: formData.expiryDate ? new Date(formData.expiryDate).toISOString() : undefined,
-      purchaseDate: formData.purchaseDate ? new Date(formData.purchaseDate).toISOString() : undefined,
+      registrationDate: formData.registrationDate ? new Date(formData.registrationDate).toISOString() : undefined,
       notes: formData.notes.trim() || undefined,
       tags: formData.tags.length > 0 ? formData.tags : undefined,
     };
@@ -236,16 +260,16 @@ export function ItemForm({ initialData, onSubmit, onCancel }) {
           />
         </div>
 
-        {/* Purchase Date */}
+        {/* Registration Date */}
         <div className="form-group">
-          <label className="input-label" htmlFor="item-purchase">
-            {t('item.purchaseDate')}
+          <label className="input-label" htmlFor="item-registration">
+            {t('item.registrationDate')}
           </label>
           <Input
-            id="item-purchase"
+            id="item-registration"
             type="date"
-            value={formData.purchaseDate}
-            onChange={(e) => handleChange('purchaseDate', e.target.value)}
+            value={formData.registrationDate}
+            onChange={(e) => handleChange('registrationDate', e.target.value)}
             fullWidth
           />
         </div>

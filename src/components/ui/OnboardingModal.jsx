@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { Sparkles, MapPin, Layers, Layout, ArrowRight } from 'lucide-react';
 import { useInventory } from '../../context/InventoryContext';
@@ -88,7 +89,7 @@ export function OnboardingModal({ isOpen, onClose }) {
     }
   };
 
-  return (
+  return createPortal(
     <div className="onboarding-overlay">
       <div className="onboarding-card animate-scale-in" role="dialog" aria-modal="true">
         <div className="onboarding-brand">
@@ -199,6 +200,7 @@ export function OnboardingModal({ isOpen, onClose }) {
           </Button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

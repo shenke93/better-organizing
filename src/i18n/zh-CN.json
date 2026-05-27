@@ -70,7 +70,7 @@
     "selectStorage": "选择存储位置",
     "noStorageLocations": "该地点没有存储位置",
     "expiryDate": "过期日期",
-    "purchaseDate": "购买日期",
+    "registrationDate": "登记日期",
     "notes": "备注",
     "notesPlaceholder": "添加备注...",
     "tags": "标签",
